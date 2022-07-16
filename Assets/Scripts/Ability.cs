@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability : ScriptableObject
+public class Ability
 {
-    public new string name;
-    public float power;
-    public float activeTime;
+    public AbilityBase Base { get; set; }
+    
+   
 
-    public virtual void Activate()
-    {
-
-    }
 }

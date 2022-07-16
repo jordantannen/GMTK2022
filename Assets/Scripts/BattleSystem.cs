@@ -136,9 +136,14 @@ public class BattleSystem : MonoBehaviour
 		if (state != BattleState.PLAYERTURN)
 			return;
 
-		StartCoroutine(die.RollTheDice());
+		if (die.rollable)
+		{
+			StartCoroutine(die.RollTheDice());
+			
+		}
 		
-
+		
+		
 		int side = die.finalSide;
 		if (side == 1)
 			StartCoroutine(PlayerAttack());

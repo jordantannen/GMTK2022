@@ -26,7 +26,9 @@ public class Dice : MonoBehaviour {
     private void OnMouseDown()
     {
         if (rollable)
+        {
             StartCoroutine("RollTheDice");
+        }
     }
 
     // Coroutine that rolls the dice
@@ -36,6 +38,8 @@ public class Dice : MonoBehaviour {
         // Variable to contain random dice side number.
         // It needs to be assigned. Let it be 0 initially
         int randomDiceSide = 0;
+
+        finalSide = Random.Range(0, diceSides.Length) + 1;
 
         // Loop to switch dice sides ramdomly
         // before final side appears. 20 itterations here.
@@ -54,9 +58,10 @@ public class Dice : MonoBehaviour {
         // Assigning final side so you can use this value later in your game
         // for player movement for example
         finalSide = randomDiceSide + 1;
-
+        
         // Show final dice value in Console
         Debug.Log(finalSide);
         Debug.Log(rollable);
+        rollable = true;
     }
 }

@@ -8,3 +8,4 @@ UserSettings/
 *.meta
 obj/
 *.csproj
+.vscode/

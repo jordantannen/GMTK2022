@@ -17,6 +17,10 @@ public class BattleSystem : MonoBehaviour
 	Unit playerUnit;
 	Unit enemyUnit;
 
+	public Transform diceSpot;
+	public GameObject diePrefab;
+	Dice die; 
+
 	public Text dialogueText;
 
 	public BattleHUD playerHUD;
@@ -43,6 +47,9 @@ public class BattleSystem : MonoBehaviour
 
 		playerHUD.SetHUD(playerUnit);
 		enemyHUD.SetHUD(enemyUnit);
+
+		GameObject diceGO = Instantiate(diePrefab, diceSpot);
+		die = diceGO.GetComponent<Dice>();
 
 		yield return new WaitForSeconds(2f);
 
@@ -108,6 +115,7 @@ public class BattleSystem : MonoBehaviour
 	void PlayerTurn()
 	{
 		dialogueText.text = "Choose an action:";
+		die.rollable = true;
 	}
 
 	IEnumerator PlayerHeal()
@@ -123,12 +131,33 @@ public class BattleSystem : MonoBehaviour
 		StartCoroutine(EnemyTurn());
 	}
 
+	public void OnRollButton()
+    {
+		if (state != BattleState.PLAYERTURN)
+			return;
+
+		StartCoroutine(die.RollTheDice());
+		
+
+		int side = die.finalSide;
+		if (side == 1)
+			StartCoroutine(PlayerAttack());
+		else
+			StartCoroutine(PlayerHeal());
+		
+	}
+
 	public void OnAttackButton()
 	{
 		if (state != BattleState.PLAYERTURN)
 			return;
 
-		StartCoroutine(PlayerAttack());
+		//StartCoroutine(die.RollTheDice());
+		int side = die.finalSide;
+		if (side == 1)
+			StartCoroutine(PlayerAttack());
+		else
+			StartCoroutine(PlayerHeal());
 	}
 
 	public void OnHealButton()

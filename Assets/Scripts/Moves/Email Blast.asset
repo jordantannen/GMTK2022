@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada2613c1fdd49f4586af9776065eef0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7493c362dc1a4784cbcbabb6fa47d5bf, type: 3}
   m_Name: Email Blast
   m_EditorClassIdentifier: 
-  name: Email Blast
-  moveType: Paper
-  description: Fucking Hate These...
-  power: 15
-  accuracy: 85
-  sprite: {fileID: 21300000, guid: 11917dd1e27ee6d4ab0dea7c2db9d96e, type: 3}
+  name: 
+  moveType: 
+  description: 
+  power: 0
+  accuracy: 0
+  sprite: {fileID: 0}

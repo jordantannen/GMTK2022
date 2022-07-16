@@ -3,6 +3,11 @@ Logs/
 Packages/
 ProjectSettings/
 Temp/
-UserSeetings/
+UserSettings/
 *.sln
+*.meta
+obj/
+*.csproj
+.vscode/
+.vs*
 

@@ -9,3 +9,5 @@ UserSettings/
 obj/
 *.csproj
 .vscode/
+.vs*
+

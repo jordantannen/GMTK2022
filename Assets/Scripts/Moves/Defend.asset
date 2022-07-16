@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada2613c1fdd49f4586af9776065eef0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7493c362dc1a4784cbcbabb6fa47d5bf, type: 3}
   m_Name: Defend
   m_EditorClassIdentifier: 
-  name: Defend
-  moveType: Normal
-  description: Defend
-  power: 10
-  accuracy: 80
-  sprite: {fileID: 21300000, guid: fa85015a8012d4240b6743961c307c92, type: 3}
+  name: 
+  moveType: 
+  description: 
+  power: 0
+  accuracy: 0
+  sprite: {fileID: 0}

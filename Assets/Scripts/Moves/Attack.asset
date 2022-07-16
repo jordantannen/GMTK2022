@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   name: Attack
+  moveType: Normal
   description: Does Damage
   power: 10
   accuracy: 90
+  sprite: {fileID: 21300000, guid: 8e837fcafd360d549a5976817d697131, type: 3}

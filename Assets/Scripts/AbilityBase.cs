@@ -7,12 +7,14 @@ using UnityEngine;
 public class AbilityBase : ScriptableObject
 {
     [SerializeField] string name;
+    [SerializeField] string moveType;
 
     [TextArea]
     [SerializeField] string description;
 
     [SerializeField] int power;
     [SerializeField] int accuracy;
+    
 
     [SerializeField] Sprite sprite;
 
@@ -39,5 +41,10 @@ public class AbilityBase : ScriptableObject
     public Sprite Sprite
     {
         get { return sprite; }
+    }
+
+    public string MoveType
+    {
+        get { return moveType; }
     }
 }

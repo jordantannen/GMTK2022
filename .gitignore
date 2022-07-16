@@ -1,0 +1,8 @@
+Library/
+Logs/
+Packages/
+ProjectSettings/
+Temp/
+UserSeetings/
+*.sln
+

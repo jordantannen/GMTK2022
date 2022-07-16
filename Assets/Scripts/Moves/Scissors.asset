@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ada2613c1fdd49f4586af9776065eef0, type: 3}
-  m_Name: Attack
+  m_Name: Scissors
   m_EditorClassIdentifier: 
-  name: Attack
-  moveType: Normal
-  description: Does Damage
-  power: 10
-  accuracy: 90
-  sprite: {fileID: 21300000, guid: 8e837fcafd360d549a5976817d697131, type: 3}
+  name: Scissors
+  moveType: Scissors
+  description: Snip Snip Neva Miss
+  power: 5
+  accuracy: 100
+  sprite: {fileID: 21300000, guid: 2b316ab394ee0124aa787965cc2c1a95, type: 3}

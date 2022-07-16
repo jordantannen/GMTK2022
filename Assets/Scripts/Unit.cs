@@ -5,6 +5,7 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
 
+	public static List<AbilityBase> learnedMoves = new List<AbilityBase>();
 	public string unitName;
 	public int unitLevel;
 

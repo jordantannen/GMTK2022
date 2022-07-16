@@ -136,15 +136,20 @@ public class BattleSystem : MonoBehaviour
 		if (state != BattleState.PLAYERTURN)
 			return;
 
-		StartCoroutine(die.RollTheDice());
+		StartCoroutine(HandleRoll());
 		
+	}
+
+	IEnumerator HandleRoll()
+    {
+		yield return StartCoroutine(die.RollTheDice());
+		yield return new WaitForSeconds(1f);
 
 		int side = die.finalSide;
 		if (side == 1)
 			StartCoroutine(PlayerAttack());
 		else
 			StartCoroutine(PlayerHeal());
-		
 	}
 
 	public void OnAttackButton()

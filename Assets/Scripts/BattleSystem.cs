@@ -64,8 +64,11 @@ public class BattleSystem : MonoBehaviour
 		bool isDead = enemyUnit.TakeDamage(move.Power);
 
 		enemyHUD.SetHP(enemyUnit.currentHP);
-		dialogueText.text = "The attack is successful!";
-		
+
+		if (move.Power > 0)
+		{
+			dialogueText.text = "The attack is successful!";
+		}
 		
 
 		yield return new WaitForSeconds(3f);
@@ -93,9 +96,9 @@ public class BattleSystem : MonoBehaviour
 
 	}
 
-	IEnumerator EnemyAttack()
+	IEnumerator EnemyAttack(AbilityBase move)
 	{
-		bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+		bool isDead = playerUnit.TakeDamage(move.Power);
 
 		playerHUD.SetHP(playerUnit.currentHP);
 		dialogueText.text = "The enemy attack is successful!";
@@ -107,11 +110,6 @@ public class BattleSystem : MonoBehaviour
 			state = BattleState.LOST;
 			EndBattle();
 		}
-		else
-		{
-			state = BattleState.PLAYERTURN;
-			PlayerTurn();
-		}
 	}
 
 	IEnumerator HandleRollEnemy()
@@ -120,23 +118,23 @@ public class BattleSystem : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 
 		int side = die.finalSide;
-		if (side == 1)
-			StartCoroutine(EnemyAttack());
-		else
-			StartCoroutine(EnemyHeal());
+		
+		StartCoroutine(EnemyAttack(enemyUnit.moves[die.finalSide]));
+		StartCoroutine(EnemyHeal(enemyUnit.moves[die.finalSide]));
+		yield return new WaitForSeconds(2f);
+
+		state = BattleState.PLAYERTURN;
+		PlayerTurn();
 	}
 
-	IEnumerator EnemyHeal()
+	IEnumerator EnemyHeal(AbilityBase move)
 	{
-		enemyUnit.Heal(5);
+		enemyUnit.Heal(move.Heal);
 
 		enemyHUD.SetHP(enemyUnit.currentHP);
 		dialogueText.text = "The enemy feels renewed strength!";
 
 		yield return new WaitForSeconds(2f);
-
-		state = BattleState.PLAYERTURN;
-		PlayerTurn();
 	}
 
 	void EndBattle()
@@ -191,7 +189,7 @@ public class BattleSystem : MonoBehaviour
 		{
 			dialogueText.text = "The attack missed!";
 		}
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(2f);
 		state = BattleState.ENEMYTURN;
 		StartCoroutine(EnemyTurn());
 		yield break;

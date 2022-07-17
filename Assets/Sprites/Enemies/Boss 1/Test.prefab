@@ -48,8 +48,8 @@ MonoBehaviour:
   unitName: The Gromp
   unitLevel: 1
   damage: 5
-  maxHP: 100
-  currentHP: 100
+  maxHP: 5
+  currentHP: 5
 --- !u!1 &1733971319119567259
 GameObject:
   m_ObjectHideFlags: 0

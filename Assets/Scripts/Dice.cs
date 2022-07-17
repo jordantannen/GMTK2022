@@ -32,7 +32,7 @@ public class Dice : MonoBehaviour {
     }
 
     // Coroutine that rolls the dice
-    public IEnumerator RollTheDice()
+    public IEnumerator RollTheDice(AbilityBase[] moves)
     {
         rollable = false;
         // Variable to contain random dice side number.
@@ -46,10 +46,10 @@ public class Dice : MonoBehaviour {
         for (int i = 0; i <= 20; i++)
         {
             // Pick up random value from 0 to 5 (All inclusive)
-            randomDiceSide = Random.Range(0, GameManager.learnedMoves.Length);
+            randomDiceSide = Random.Range(0, moves.Length);
 
             // Set sprite to upper face of dice from array according to random value
-            rend.sprite = GameManager.learnedMoves[randomDiceSide].Sprite;
+            rend.sprite = moves[randomDiceSide].Sprite;
 
             // Pause before next itteration
             yield return new WaitForSeconds(0.05f);

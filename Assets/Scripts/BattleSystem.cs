@@ -116,7 +116,7 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator HandleRollEnemy()
 	{
-		yield return StartCoroutine(die.RollTheDice());
+		yield return StartCoroutine(die.RollTheDice(enemyUnit.moves));
 		yield return new WaitForSeconds(1f);
 
 		int side = die.finalSide;
@@ -177,7 +177,7 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator HandleRoll()
     {
-		yield return StartCoroutine(die.RollTheDice());
+		yield return StartCoroutine(die.RollTheDice(GameManager.learnedMoves));
 		yield return new WaitForSeconds(1f);
 
 		int side = die.finalSide;

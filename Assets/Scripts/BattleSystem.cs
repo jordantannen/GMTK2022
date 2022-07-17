@@ -59,22 +59,22 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator PlayerAttack(AbilityBase move)
 	{
+
+		
 		bool isDead = enemyUnit.TakeDamage(move.Power);
 
 		enemyHUD.SetHP(enemyUnit.currentHP);
 		dialogueText.text = "The attack is successful!";
+		
+		
 
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(3f);
 
 		if(isDead)
 		{
 			state = BattleState.WON;
 			EndBattle();
-		} else
-		{
-			state = BattleState.ENEMYTURN;
-			StartCoroutine(EnemyTurn());
-		}
+		} 
 	}
 
 	IEnumerator EnemyTurn()
@@ -157,17 +157,13 @@ public class BattleSystem : MonoBehaviour
 		die.rollable = true;
 	}
 
-	IEnumerator PlayerHeal()
+	IEnumerator PlayerHeal(AbilityBase move)
 	{
-		playerUnit.Heal(5);
+		playerUnit.Heal(move.Heal);
 
 		playerHUD.SetHP(playerUnit.currentHP);
-		dialogueText.text = "You feel renewed strength!";
 
-		yield return new WaitForSeconds(2f);
-
-		state = BattleState.ENEMYTURN;
-		StartCoroutine(EnemyTurn());
+		yield return new WaitForSeconds(3f);
 	}
 
 	public void OnRollButton()
@@ -185,35 +181,20 @@ public class BattleSystem : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 
 		int side = die.finalSide;
-		StartCoroutine(PlayerAttack(GameManager.learnedMoves[die.finalSide]));
+		int randint = Random.Range(0, 100);
+		if (randint <= GameManager.learnedMoves[die.finalSide].Accuracy)
+		{
+			StartCoroutine(PlayerAttack(GameManager.learnedMoves[die.finalSide]));
+			StartCoroutine(PlayerHeal(GameManager.learnedMoves[die.finalSide]));
+		}
+		else
+		{
+			dialogueText.text = "The attack missed!";
+		}
+		yield return new WaitForSeconds(3f);
+		state = BattleState.ENEMYTURN;
+		StartCoroutine(EnemyTurn());
 		yield break;
-		if (side == 1)
-			StartCoroutine(PlayerAttack(GameManager.learnedMoves[die.finalSide]));
-		else
-			StartCoroutine(PlayerHeal());
-	}
-
-	public void OnAttackButton()
-	{
-		if (state != BattleState.PLAYERTURN)
-			return;
-
-		//StartCoroutine(die.RollTheDice());
-		int side = die.finalSide;
-		StartCoroutine(PlayerAttack(GameManager.learnedMoves[die.finalSide]));
-		return;
-		if (side == 1)
-			StartCoroutine(PlayerAttack(GameManager.learnedMoves[die.finalSide]));
-		else
-			StartCoroutine(PlayerHeal());
-	}
-
-	public void OnHealButton()
-	{
-		if (state != BattleState.PLAYERTURN)
-			return;
-
-		StartCoroutine(PlayerHeal());
-	}
+	}	
 
 }

@@ -62,6 +62,5 @@ public class Dice : MonoBehaviour {
         // Show final dice value in Console
         Debug.Log(finalSide);
         Debug.Log(rollable);
-        rollable = true;
     }
 }

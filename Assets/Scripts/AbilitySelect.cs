@@ -41,7 +41,10 @@ public class AbilitySelect : MonoBehaviour
         gameObject.SetActive(false);
         Debug.Log(GameManager.learnedMoves.Length);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
         
     }
 }

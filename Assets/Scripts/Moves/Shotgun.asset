@@ -15,7 +15,7 @@ MonoBehaviour:
   name: 
   moveType: 
   description: 
-  power: 0
-  heal: 0
-  accuracy: 0
+  power: 30
+  heal: 2
+  accuracy: 75
   sprite: {fileID: 0}

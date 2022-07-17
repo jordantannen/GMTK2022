@@ -121,7 +121,7 @@ public class BattleSystem : MonoBehaviour
 		
 		StartCoroutine(EnemyAttack(enemyUnit.moves[die.finalSide]));
 		StartCoroutine(EnemyHeal(enemyUnit.moves[die.finalSide]));
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1.2f);
 
 		state = BattleState.PLAYERTURN;
 		PlayerTurn();

@@ -45,11 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475d8d7ed9646504888a5702b5d7ed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Rock
-  unitLevel: 999
+  moves:
+  - {fileID: 11400000, guid: 66e7b1b4c4fdbaf40a251566d5dae2e9, type: 2}
+  - {fileID: 11400000, guid: 66e7b1b4c4fdbaf40a251566d5dae2e9, type: 2}
+  - {fileID: 11400000, guid: e778b89b77daebb42b4fae81155b9f57, type: 2}
+  unitName: You
+  unitLevel: 1
   damage: 1
-  maxHP: 1000
-  currentHP: 1000
+  maxHP: 100
+  currentHP: 100
 --- !u!1 &6450721039946225802
 GameObject:
   m_ObjectHideFlags: 0

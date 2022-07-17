@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceSides:
   - {fileID: 21300000, guid: 8e837fcafd360d549a5976817d697131, type: 3}
-  - {fileID: 21300000, guid: fa85015a8012d4240b6743961c307c92, type: 3}
+  - {fileID: 21300000, guid: 8e837fcafd360d549a5976817d697131, type: 3}
+  - {fileID: 21300000, guid: 8e837fcafd360d549a5976817d697131, type: 3}
   finalSide: 1
   rollable: 0

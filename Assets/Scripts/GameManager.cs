@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         learnedMoves = new AbilityBase[2];
         learnedMoves[0] = moves[0];
         learnedMoves[1] = moves[1];
+        learnedMoves[2] = moves[2];
     }
 
     // Update is called once per frame

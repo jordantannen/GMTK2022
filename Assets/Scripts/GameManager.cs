@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetNewAbility();
     }
 
     // Update is called once per frame

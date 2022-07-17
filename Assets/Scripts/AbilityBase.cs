@@ -13,6 +13,7 @@ public class AbilityBase : ScriptableObject
     [SerializeField] string description;
 
     [SerializeField] int power;
+    [SerializeField] int heal;
     [SerializeField] int accuracy;
     
 
@@ -31,6 +32,11 @@ public class AbilityBase : ScriptableObject
     public int Power
     {
         get { return power; }
+    }
+
+    public int Heal
+    {
+        get { return heal; }
     }
 
     public int Accuracy

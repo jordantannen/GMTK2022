@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
@@ -146,6 +147,7 @@ public class BattleSystem : MonoBehaviour
 		} else if (state == BattleState.LOST)
 		{
 			dialogueText.text = "You were defeated.";
+			Invoke("Restart", 2f);
 		}
 	}
 
@@ -195,4 +197,8 @@ public class BattleSystem : MonoBehaviour
 		yield break;
 	}	
 
+	public void Restart()
+	{
+		SceneManager.LoadScene(0);
+	}
 }

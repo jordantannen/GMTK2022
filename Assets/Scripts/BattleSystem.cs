@@ -27,7 +27,7 @@ public class BattleSystem : MonoBehaviour
 	public BattleHUD enemyHUD;
 
 	public BattleState state;
-
+	public GameObject manager;
     // Start is called before the first frame update
     void Start()
     {
@@ -106,6 +106,7 @@ public class BattleSystem : MonoBehaviour
 		if(state == BattleState.WON)
 		{
 			dialogueText.text = "You won the battle!";
+			manager.GetComponent<GameManager>().Invoke("GetNewAbility", 1.5f);
 		} else if (state == BattleState.LOST)
 		{
 			dialogueText.text = "You were defeated.";

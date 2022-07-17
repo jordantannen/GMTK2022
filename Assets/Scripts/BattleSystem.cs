@@ -57,9 +57,9 @@ public class BattleSystem : MonoBehaviour
 		PlayerTurn();
 	}
 
-	IEnumerator PlayerAttack()
+	IEnumerator PlayerAttack(AbilityBase move)
 	{
-		bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+		bool isDead = enemyUnit.TakeDamage(move.Power);
 
 		enemyHUD.SetHP(enemyUnit.currentHP);
 		dialogueText.text = "The attack is successful!";
@@ -185,8 +185,10 @@ public class BattleSystem : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 
 		int side = die.finalSide;
+		StartCoroutine(PlayerAttack(GameManager.learnedMoves[die.finalSide]));
+		yield break;
 		if (side == 1)
-			StartCoroutine(PlayerAttack());
+			StartCoroutine(PlayerAttack(GameManager.learnedMoves[die.finalSide]));
 		else
 			StartCoroutine(PlayerHeal());
 	}
@@ -198,8 +200,10 @@ public class BattleSystem : MonoBehaviour
 
 		//StartCoroutine(die.RollTheDice());
 		int side = die.finalSide;
+		StartCoroutine(PlayerAttack(GameManager.learnedMoves[die.finalSide]));
+		return;
 		if (side == 1)
-			StartCoroutine(PlayerAttack());
+			StartCoroutine(PlayerAttack(GameManager.learnedMoves[die.finalSide]));
 		else
 			StartCoroutine(PlayerHeal());
 	}

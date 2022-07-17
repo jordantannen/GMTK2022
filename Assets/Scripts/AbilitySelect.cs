@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class AbilitySelect : MonoBehaviour
 {
@@ -10,10 +11,10 @@ public class AbilitySelect : MonoBehaviour
     public Button[] buttons;
     
     // Start is called before the first frame update
+    
+
     void Start()
     {
-        Debug.Log(buttons.Length);
-
     }
 
     // Update is called once per frame
@@ -36,7 +37,11 @@ public class AbilitySelect : MonoBehaviour
 
     public void Select(AbilityBase move)
     {
+        GameManager.LearnMove(move);
         gameObject.SetActive(false);
-        Unit.learnedMoves.Add(move);
+        Debug.Log(GameManager.learnedMoves.Length);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
     }
 }

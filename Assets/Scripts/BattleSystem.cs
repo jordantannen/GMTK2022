@@ -79,26 +79,64 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator EnemyTurn()
 	{
-		dialogueText.text = enemyUnit.unitName + " attacks!";
+		dialogueText.text = enemyUnit.unitName + " is rolling!";
+
+		StartCoroutine(HandleRollEnemy());
 
 		yield return new WaitForSeconds(1f);
 
-		bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+		//bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
 
 		playerHUD.SetHP(playerUnit.currentHP);
 
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(2f);
 
-		if(isDead)
+	}
+
+	IEnumerator EnemyAttack()
+	{
+		bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+
+		playerHUD.SetHP(playerUnit.currentHP);
+		dialogueText.text = "The enemy attack is successful!";
+
+		yield return new WaitForSeconds(3f);
+
+		if (isDead)
 		{
 			state = BattleState.LOST;
 			EndBattle();
-		} else
+		}
+		else
 		{
 			state = BattleState.PLAYERTURN;
 			PlayerTurn();
 		}
+	}
 
+	IEnumerator HandleRollEnemy()
+	{
+		yield return StartCoroutine(die.RollTheDice());
+		yield return new WaitForSeconds(1f);
+
+		int side = die.finalSide;
+		if (side == 1)
+			StartCoroutine(EnemyAttack());
+		else
+			StartCoroutine(EnemyHeal());
+	}
+
+	IEnumerator EnemyHeal()
+	{
+		enemyUnit.Heal(5);
+
+		enemyHUD.SetHP(enemyUnit.currentHP);
+		dialogueText.text = "The enemy feels renewed strength!";
+
+		yield return new WaitForSeconds(2f);
+
+		state = BattleState.PLAYERTURN;
+		PlayerTurn();
 	}
 
 	void EndBattle()
